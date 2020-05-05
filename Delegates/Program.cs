@@ -6,10 +6,9 @@ namespace Delegates
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World this is Delegate topic!");
-            Console.WriteLine("Has something changed?");
-            Console.WriteLine("See what happens...");
+            var photoProcessor = new PhotoProcessor();
 
+            photoProcessor.Process("C:\\");
         }
     }
 }
