@@ -10,7 +10,7 @@ namespace Delegates
             var filters = new PhotoFilters();
             var photo = new Photo();
 
-            PhotoProcessor.PhotoFilterHandler filterHandler = filters.ApplyBrightness;
+            Action<Photo> filterHandler = filters.ApplyBrightness;
 
             filterHandler += filters.ApplyContrast;
             filterHandler += Test;
