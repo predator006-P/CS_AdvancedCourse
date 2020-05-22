@@ -6,7 +6,17 @@ namespace LambdaExpressions
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Func<int, int> square = number => number * number;
+            Console.WriteLine(square(413));
+
+            var books = new BookRepository().GetBooks();
+
+            var cheapBooks = books.FindAll(book => book.Price < 10);
+
+            foreach (var book in cheapBooks)
+            {
+                Console.WriteLine(book.Title);
+            }
         }
     }
 }
