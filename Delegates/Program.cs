@@ -15,6 +15,8 @@ namespace Delegates
 
             filterHandler += filters.ApplyContrast;
             filterHandler += Test;
+            filterHandler += Test2;
+
 
             photoProcessor.Process("photo.jpg", filterHandler);
         }
@@ -22,6 +24,10 @@ namespace Delegates
         static void Test(Photo photo)
         {
             Console.WriteLine("\nTEST!!!\n");
+        }
+        static void Test2(Photo photo)
+        {
+            Console.WriteLine("\nTEST2!!!\n");
         }
     }
 }
