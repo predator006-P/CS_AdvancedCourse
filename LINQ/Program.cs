@@ -10,24 +10,27 @@ namespace LINQ
         {
             var books = new BookRepository().GetBooks();
 
-            // LINQ Query Operators
-            var cheaperBooks =
-                from b in books
-                where b.Price < 10
-                orderby b.Title
-                select b.Title;
-
             // LINQ Extension Methods
-            var cheapBooks = books
-                                .Where(b => b.Price < 10)  //filter
-                                .OrderBy(b => b.Title)     //sort
-                                .Select(b => b.Title);     //select
+            var book = books.LastOrDefault(b => b.Title == "C# Advanced Topics");
 
-            foreach (var book in cheaperBooks)
+            var pagedBooks = books.Skip(2).Take(1);
+            var count = books.Count();
+
+            var maxPrice = books.Max(b => b.Price);
+            var minPrice = books.Min(b => b.Price);
+            var totalPrices = books.Sum(b => b.Price);
+
+            Console.WriteLine(book.Title +" " +book.Price);
+            Console.WriteLine(book == null);
+
+            foreach (var pagedBook in pagedBooks)
             {
-               // Console.WriteLine(book.Title + " " + book.Price);
-                Console.WriteLine(book);
+                Console.WriteLine(pagedBook.Title + " " + pagedBook.Price);
             }
+            Console.WriteLine(count);
+            Console.WriteLine(maxPrice);
+            Console.WriteLine(minPrice);
+            Console.WriteLine(totalPrices);
         }
     }
 }
