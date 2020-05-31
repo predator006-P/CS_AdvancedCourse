@@ -34,6 +34,7 @@ namespace ExceptionHandling
         {
             try
             {
+                Console.WriteLine("This is a test branch version.");
                 var youTubeApi = new YouTubeApi();
                 youTubeApi.GetVideos("Peti");
             }
