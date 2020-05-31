@@ -6,7 +6,17 @@ namespace ExceptionHandling
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            try
+            {
+                var calculator = new Calculator();
+                var result = calculator.Divide(5, 0);
+            }
+            
+            catch (DivideByZeroException ex)
+            {
+                Console.WriteLine(ex.Message); ;
+            }
+            
         }
     }
 }
