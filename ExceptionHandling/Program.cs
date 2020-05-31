@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace ExceptionHandling
 {
@@ -6,15 +7,22 @@ namespace ExceptionHandling
     {
         static void Main(string[] args)
         {
+            StreamReader streamReader = null;
             try
             {
-                var calculator = new Calculator();
-                var result = calculator.Divide(5, 0);
+                streamReader = new StreamReader(@"c:\file.zip");
+                var content = streamReader.ReadToEnd();
+                throw new Exception("Oopsz");
             }
             
-            catch (DivideByZeroException ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message); ;
+            }
+            finally
+            {
+                if (streamReader != null)
+                    streamReader.Dispose();
             }
             
         }
