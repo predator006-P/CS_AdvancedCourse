@@ -27,10 +27,26 @@ namespace Async
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public async Task<string> GetHtmlAsync(string url)
         {
-            DownloadHtmlAsync("http://msdn.microsoft.com");
+            var webClient = new WebClient();
+            return await webClient.DownloadStringTaskAsync(url);
         }
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //DownloadHtmlAsync("http://msdn.microsoft.com");
+            var getHtmlTask = GetHtmlAsync("http://www.nso.hu");
+            MessageBox.Show("Waiting for the task to complete");
+            var html = await getHtmlTask;
+            MessageBox.Show(html.Substring(0, 100));
+        }
+
+        public string GetHtml(string url)
+        {
+            var webClient = new WebClient();
+            return webClient.DownloadString(url);
+        }
+
 
         public async Task DownloadHtmlAsync(string url)
         {
